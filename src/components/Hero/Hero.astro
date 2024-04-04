@@ -1,3 +1,7 @@
+---
+import Button from './Button.astro';
+---
+
 <div class="mx-auto flex h-screen max-w-7xl items-center justify-center">
   <div class="flex-col space-y-6">
     <h1 class="font-serif text-5xl">
@@ -12,24 +16,8 @@
       solves real problems and <span class="font-bold text-primary">creates business value</span>.
     </p>
     <div class="flex space-x-4">
-      <button
-        class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-primary to-secondary p-0.5 text-sm font-medium text-white hover:text-primary group-hover:from-primary group-hover:to-secondary"
-      >
-        <span
-          class="relative rounded-md px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-white"
-        >
-          Check my projects
-        </span>
-      </button>
-      <button
-        class="group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-primary to-secondary p-0.5 text-sm font-medium text-primary hover:text-white group-hover:from-primary group-hover:to-secondary"
-      >
-        <span
-          class="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0"
-        >
-          Read about me
-        </span>
-      </button>
+      <Button type="primary">Check my projects</Button>
+      <Button>Read about me</Button>
     </div>
   </div>
   <img class="max-h-[1024px] select-none" src="/me.png" alt="" />

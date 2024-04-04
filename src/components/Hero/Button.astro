@@ -1,0 +1,18 @@
+---
+const { type } = Astro.props;
+
+const textColor =
+  type === 'primary' ? 'text-white hover:text-primary' : 'text-primary hover:text-white';
+const backgroundColor =
+  type === 'primary' ? 'group-hover:bg-white' : 'bg-white group-hover:bg-opacity-0';
+---
+
+<button
+  class={`${textColor} group relative mb-2 me-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-primary to-secondary p-0.5 text-sm font-medium group-hover:from-primary group-hover:to-secondary`}
+>
+  <span
+    class={`${backgroundColor} relative rounded-md px-5 py-2.5 transition-all duration-75 ease-in`}
+  >
+    <slot />
+  </span>
+</button>
