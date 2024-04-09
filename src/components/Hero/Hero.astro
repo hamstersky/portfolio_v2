@@ -2,24 +2,25 @@
 import Button from './Button.astro';
 ---
 
-<div class="mx-auto flex h-screen max-w-7xl items-center justify-center">
-  <div class="flex-col space-y-6">
-    <h1 class="font-serif text-5xl">
+<div class="flex h-screen max-w-7xl flex-col-reverse items-center justify-center p-4 md:flex-row">
+  <div class="flex max-w-prose flex-col space-y-6 md:mt-24">
+    <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl">
       Hi! I'm <span class="font-bold text-primary">Dominik</span>. I love building software that <span
         class="font-bold text-primary">creates value</span
       >.
     </h1>
-    <p>
+    <p class="text-sm md:text-base">
       I’m a <span class="font-bold text-primary">software engineer</span> with <span
         class="font-bold text-primary">7+ years of experience</span
-      > in web development, project management and client relations. My goal is to create software that
+      >
+      in web development, project management, and client relations. My goal is to create software that
       solves real problems and <span class="font-bold text-primary">creates business value</span>.
     </p>
-    <div class="flex space-x-4">
+    <div class="flex space-x-2">
       <Button type="primary">Check my projects</Button>
       <Button>Read about me</Button>
     </div>
   </div>
-  <img class="max-h-[90vh] select-none" src="/me.png" alt="" />
+  <img class="max-h-[70vh] select-none sm:max-h-[70vh] lg:max-h-[90vh]" src="/me.png" alt="" />
 </div>
 <p>testing</p>
