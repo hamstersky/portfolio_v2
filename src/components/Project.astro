@@ -1,0 +1,65 @@
+---
+import Button from './Button.astro';
+
+const { reverse, tags } = Astro.props;
+---
+
+<project-section
+  class:list={[
+    'relative mx-auto flex max-w-7xl flex-col-reverse justify-between px-4 md:items-center md:space-x-24 md:space-x-reverse',
+    reverse ? 'md:flex-row-reverse' : 'md:flex-row',
+  ]}
+>
+  <div
+    id="backdrop"
+    class="absolute left-0 z-0 h-full w-full overflow-hidden bg-secondary/40 blur-3xl transition duration-200 ease-linear"
+  >
+  </div>
+  <div class="z-10 flex flex-1 flex-col space-y-4">
+    <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl">Greatapp</h2>
+    <div class="flex space-x-2 text-sm">
+      {
+        tags.map((tag: string) => (
+          <span class="w-fit rounded-full bg-primary px-4 py-1 text-white">{tag}</span>
+        ))
+      }
+    </div>
+    <p class="max-w-prose">
+      <slot />
+    </p>
+    <Button type="primary">See more</Button>
+  </div>
+
+  <div class="z-10 flex-1">
+    <img class="min-w-full rounded-3xl object-cover" src="/project_placeholder.png" alt="" />
+  </div>
+</project-section>
+
+<script>
+  class Project extends HTMLElement {
+    constructor() {
+      super();
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const backdrop = this.querySelector('#backdrop');
+
+            if (entry.isIntersecting) {
+              backdrop?.classList.remove('opacity-0');
+            } else {
+              backdrop?.classList.add('opacity-0');
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: '-128px 0px', // corresponds to the gap between projects
+          threshold: 1.0,
+        },
+      );
+      observer.observe(this);
+    }
+  }
+
+  customElements.define('project-section', Project);
+</script>
