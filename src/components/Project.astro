@@ -6,7 +6,7 @@ const { reverse, tags } = Astro.props;
 
 <project-section
   class:list={[
-    'relative flex flex-col-reverse justify-between md:items-center md:space-x-24 md:space-x-reverse',
+    'relative flex flex-col-reverse justify-between gap-4 md:items-center md:gap-12 lg:gap-24',
     reverse ? 'md:flex-row-reverse' : 'md:flex-row',
   ]}
 >
@@ -39,6 +39,9 @@ const { reverse, tags } = Astro.props;
   class Project extends HTMLElement {
     constructor() {
       super();
+
+      const rootMargin = window.innerWidth >= 768 ? '-128px' : '0px';
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -53,7 +56,7 @@ const { reverse, tags } = Astro.props;
         },
         {
           root: null,
-          rootMargin: '-128px 0px', // corresponds to the gap between projects
+          rootMargin: `${rootMargin} 0px`, // corresponds to the gap between projects
           threshold: 1.0,
         },
       );
