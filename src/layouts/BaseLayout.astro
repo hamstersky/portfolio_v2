@@ -13,6 +13,8 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Navbar />
-    <slot />
+    <main class="mx-auto max-w-7xl px-4">
+      <slot />
+    </main>
   </body>
 </html>
