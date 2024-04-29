@@ -5,6 +5,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"]
-    }
+    },
+    "strictNullChecks": true,
+    "allowJs": true
   }
 }
