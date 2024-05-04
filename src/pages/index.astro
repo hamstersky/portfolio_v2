@@ -1,10 +1,33 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Hero from '@components/Hero.astro';
+import Project from '@components/Project.astro';
+import TextHighlight from '@components/TextHighlight.astro';
+import { getCollection, getEntry } from 'astro:content';
 
 const pageTitle = 'Portfolio | Dominik Chomicki | Software Developer';
+
+const projects = await getCollection('projects');
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <Hero />
+  <h2 class="mt-12 text-center font-serif text-3xl font-bold md:mt-0 md:text-4xl lg:text-5xl">
+    Featured projects
+  </h2>
+  <hr class="mx-auto mb-12 mt-6 h-1 w-24 rounded bg-primary" />
+
+  <div class="flex-col space-y-24 md:space-y-32">
+    {
+      projects.map(async (project, i) => {
+        const excerpt = await getEntry(project.data.excerpt);
+        const { Content } = await excerpt.render();
+        return (
+          <Project reverse={i % 2 == 1} data={project.data}>
+            <Content />
+          </Project>
+        );
+      })
+    }
+  </div>
 </BaseLayout>
