@@ -1,7 +1,8 @@
 ---
 import Button from './Button.astro';
 
-const { reverse, tags } = Astro.props;
+const { reverse, data } = Astro.props;
+const { title, tags, image } = data;
 ---
 
 <project-section
@@ -16,7 +17,7 @@ const { reverse, tags } = Astro.props;
   >
   </div>
   <div class="z-10 flex flex-1 flex-col space-y-4">
-    <h3 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Greatapp</h3>
+    <h3 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">{title}</h3>
     <div class="flex space-x-2 text-sm">
       {
         tags.map((tag: string) => (
@@ -31,11 +32,7 @@ const { reverse, tags } = Astro.props;
   </div>
 
   <div class="z-10 flex-1">
-    <img
-      class="min-w-full rounded-3xl object-cover shadow-2xl shadow-primary"
-      src="/project_placeholder.png"
-      alt=""
-    />
+    <img class="min-w-full rounded-3xl object-cover shadow-2xl shadow-primary" src={image} alt="" />
   </div>
 </project-section>
 
