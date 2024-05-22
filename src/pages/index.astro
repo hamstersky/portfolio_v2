@@ -4,6 +4,7 @@ import Hero from '@components/Hero.astro';
 import Project from '@components/Project.astro';
 import TextHighlight from '@components/TextHighlight.astro';
 import { getCollection, getEntry } from 'astro:content';
+import Contact from '@components/Contact.astro';
 
 const pageTitle = 'Portfolio | Dominik Chomicki | Software Developer';
 
@@ -29,5 +30,6 @@ const projects = await getCollection('projects');
         );
       })
     }
+    <Contact />
   </div>
 </BaseLayout>
