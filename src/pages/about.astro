@@ -1,0 +1,153 @@
+---
+import Contact from '@components/Contact.astro';
+import TextHighlight from '@components/TextHighlight.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TechStack from '@components/TechStack.astro';
+const pageTitle = 'About | Dominik Chomicki | Software Developer';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="mb-12 flex flex-col gap-12 pt-20 md:mb-24 md:pt-28">
+    <!-- Background -->
+    <div class="flex flex-col-reverse gap-8 md:flex-row">
+      <div class="flex flex-1 flex-col gap-4">
+        <h1 class="font-serif text-3xl font-bold md:text-4xl lg:text-5xl">
+          About <TextHighlight>Dominik</TextHighlight>
+        </h1>
+        <div class="flex flex-col gap-4 leading-7 lg:max-w-prose">
+          <p>
+            I'm 28 years old, born in Poland, living in Copenhagen for the last 10 years. I'm a
+            software developer with over 7 years of interdisciplinary experience in business and
+            technology.
+          </p>
+          <p>
+            I started my career working in business operations roles such as account manager,
+            process manager and product owner. During this time, I delivered software projects for
+            well-known Danish organizations such as DR Koncerthuset, Glyptoteket, Rigsarkivet and
+            ATP Ejendomme.
+          </p>
+          <p>
+            Despite my successes on the operations side, I gradually realised that my true passion
+            lies in hands-on software development. I decided to make a career switch, purse formal
+            software education and become a software developer.
+          </p>
+          <img class="flex-1 rounded-3xl lg:hidden" src="me_about.png" alt="" />
+          <h2 class="font-serif text-xl font-bold md:text-2xl lg:text-3xl">
+            My software development philosophy
+          </h2>
+          <p>
+            My approach to software development is to focus on the value it brings to the
+            stakeholders. Especially end-users. Too often software is built based on vague
+            requirements that don't fully articulate why the software is being built. What problem
+            does it really solve? Do the end-users want that software? Is there an existing solution
+            and we're reinventing the wheel?
+          </p>
+          <p>
+            I always strive to fully understand the business problems of the organization that
+            orders the software. What is the goal of the organization? How does the software
+            contribute to that goal? Who is the target audience? Why build it now?
+          </p>
+          <p>
+            I believe that's the only way to build software that truly matters and creates real
+            value.
+          </p>
+        </div>
+      </div>
+      <img
+        class="hidden flex-1 rounded-3xl object-cover object-right lg:block"
+        src="me_about.png"
+        alt=""
+      />
+    </div>
+
+    <!-- Boxes -->
+    <div class="flex flex-col gap-8 md:flex-row">
+      <div
+        class="flex flex-1 flex-col rounded-3xl bg-primary p-6 text-center text-xl font-bold text-white"
+      >
+        <span>50+</span>
+        <span>Projects done</span>
+      </div>
+      <div
+        class="flex flex-1 flex-col rounded-3xl border border-primary p-6 text-center text-xl font-bold text-primary"
+      >
+        <span>7+</span>
+        <span>Years of experience</span>
+      </div>
+      <div
+        class="flex flex-1 flex-col rounded-3xl bg-secondary/40 p-6 text-center text-xl font-bold text-primary"
+      >
+        <span>100+</span>
+        <span>Bugs fixed</span>
+      </div>
+    </div>
+
+    <!-- Tech stack -->
+    <div class="flex flex-col gap-4">
+      <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Tech stack</h2>
+      <hr class="h-1 w-24 rounded bg-primary" />
+      <TechStack />
+    </div>
+
+    <!-- Experience -->
+    <div class="flex flex-col gap-8 sm:flex-row">
+      <!-- Work -->
+      <div class="flex flex-1 flex-col gap-6">
+        <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Work experience</h2>
+        <hr class="h-1 w-24 rounded bg-primary" />
+
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary">Aug 2023 - Present</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">Software developer (Full-stack)</h3>
+          <span>Dalux ApS</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary">Sep 2022 - Jul 2023</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">Head of Software Development</h3>
+          <span>Twentyfour ApS</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary">Mar 2021 - Aug 2022</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">Product Owner</h3>
+          <span>Twentyfour ApS</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary">Aug 2021 - Dec 2021</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">Teaching assistant</h3>
+          <span>IT University of Copenhagen</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary"> Mar 2018 - Feb 2021</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">
+            Account Manager & Internal Process Manager
+          </h3>
+          <span>Twentyfour ApS</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary">Mar 2017 - Feb 2018</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">Account Manager</h3>
+          <span>Twentyfour ApS</span>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="flex flex-1 flex-col gap-6">
+        <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Education</h2>
+        <hr class="h-1 w-24 rounded bg-primary" />
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary">JAN 2021 - FEB 2022</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">MSc in Software Design</h3>
+          <span>IT University of Copenhagen</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold uppercase text-primary">JAN 2021 - FEB 2022</span>
+          <h3 class="font-serif text-lg md:text-xl lg:text-2xl">BA in Business Economics and IT</h3>
+          <span>Copenhagen School of Design and Technology</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <Contact />
+  </div>
+</BaseLayout>
