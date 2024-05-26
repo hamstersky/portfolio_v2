@@ -1,8 +1,13 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import Button from './Button.astro';
+interface Props {
+  reverse: boolean;
+  project: CollectionEntry<'projects'>;
+}
 
-const { reverse, data } = Astro.props;
-const { title, tags, image } = data;
+const { reverse, project } = Astro.props;
+const { title, tags, image } = project.data;
 ---
 
 <project-section
@@ -28,7 +33,9 @@ const { title, tags, image } = data;
     <p class="max-w-prose">
       <slot />
     </p>
-    <Button type="primary">See more</Button>
+    <a href=`/projects/${project.slug}`>
+      <Button type="primary">See more</Button>
+    </a>
   </div>
 
   <div class="z-10 flex-1">
