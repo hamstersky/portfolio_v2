@@ -1,7 +1,7 @@
 import { z, defineCollection, reference } from 'astro:content';
 
 const projectExcerpts = defineCollection({
-  type: 'data',
+  type: 'content',
 });
 
 const projects = defineCollection({
