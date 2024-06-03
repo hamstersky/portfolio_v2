@@ -27,7 +27,7 @@ const projects = await getCollection('projects');
           const excerpt = await getEntry(project.data.excerpt);
           const { Content } = await excerpt.render();
           return (
-            <Project reverse={i % 2 == 1} data={project.data}>
+            <Project reverse={i % 2 == 1} project={project}>
               <Content />
             </Project>
           );
