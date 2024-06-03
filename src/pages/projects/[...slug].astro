@@ -1,0 +1,98 @@
+---
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Button from '@components/Button.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: project,
+  }));
+}
+type Props = CollectionEntry<'projects'>;
+
+const project = Astro.props;
+const data = project.data;
+const { Content } = await project.render();
+const excerpt = await getEntry(project.data.excerpt);
+const { Content: Excerpt } = await excerpt.render();
+const small_images = data.gallery.slice(0, 2);
+---
+
+<BaseLayout title={project.data.title}>
+  <div class="mb-12 flex flex-col gap-8 pt-20 md:mb-24 md:pt-28">
+    <!-- Project info -->
+    <div class="flex flex-col gap-4 md:flex-row md:gap-8">
+      <!-- Left col -->
+      <div class="flex flex-1 flex-col gap-4">
+        <h1 class="font-serif text-3xl font-bold md:text-4xl lg:text-5xl">{data.title}</h1>
+        <Excerpt />
+        <Content />
+        <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Result</h2>
+        <ul class="list-inside list-disc">
+          {data.result.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <!-- Right col -->
+      <div class="flex flex-1 flex-col gap-4">
+        {
+          data.client && (
+            <>
+              <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Client</h2>
+              {data.client}
+            </>
+          )
+        }
+        {
+          data.scope && (
+            <>
+              <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Scope</h2>
+              {data.scope.join(', ')}
+            </>
+          )
+        }
+        <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Technologies</h2>
+        {data.tech.join(', ')}
+      </div>
+    </div>
+    <div class="flex space-x-2">
+      {
+        data.url ? (
+          <a href={data.url}>
+            <Button type="primary">See live</Button>
+          </a>
+        ) : (
+          ''
+        )
+      }
+      {
+        data.github ? (
+          <a href={data.github}>
+            <Button>See code</Button>
+          </a>
+        ) : (
+          ''
+        )
+      }
+    </div>
+    <div class="flex flex-col gap-8">
+      <!-- Small images -->
+      <div class="flex flex-col justify-between gap-8 md:flex-row">
+        {
+          small_images.map((src) => (
+            <img class="w-full rounded-3xl shadow-2xl shadow-primary" src={src} alt="" />
+          ))
+        }
+      </div>
+      <!-- Full page -->
+      <img
+        class="w-full rounded-3xl shadow-2xl shadow-primary"
+        src={data.gallery.slice(-1)[0]}
+        alt=""
+      />
+    </div>
+  </div>
+  <!-- Gallery -->
+</BaseLayout>
