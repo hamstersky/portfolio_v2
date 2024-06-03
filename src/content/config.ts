@@ -11,6 +11,13 @@ const projects = defineCollection({
     tags: z.array(z.string()),
     image: z.string(),
     excerpt: reference('projectExcerpts'),
+    client: z.string().optional(),
+    scope: z.array(z.string()).optional(),
+    tech: z.array(z.string()),
+    result: z.array(z.string()),
+    gallery: z.array(z.string()),
+    github: z.string().optional(),
+    url: z.string().optional(),
   }),
 });
 
