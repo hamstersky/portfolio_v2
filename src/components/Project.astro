@@ -12,8 +12,6 @@ const { reverse, project } = Astro.props;
 const { title, tags, image } = project.data;
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
-if (!images[image])
-  throw new Error(`"${image}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif}"`);
 
 const image_path = images[image]();
 ---
