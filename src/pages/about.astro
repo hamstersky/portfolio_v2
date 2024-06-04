@@ -3,6 +3,9 @@ import Contact from '@components/Contact.astro';
 import TextHighlight from '@components/TextHighlight.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import TechStack from '@components/TechStack.astro';
+import { Image } from 'astro:assets';
+import MeAbout from '../assets/me_about.png';
+
 const pageTitle = 'About | Dominik Chomicki | Software Developer';
 ---
 
@@ -31,7 +34,7 @@ const pageTitle = 'About | Dominik Chomicki | Software Developer';
             lies in hands-on software development. I decided to make a career switch, purse formal
             software education and become a software developer.
           </p>
-          <img class="flex-1 rounded-3xl lg:hidden" src="me_about.png" alt="" />
+          <Image class="flex-1 rounded-3xl lg:hidden" src={MeAbout} alt="" />
           <h2 class="font-serif text-xl font-bold md:text-2xl lg:text-3xl">
             My software development philosophy
           </h2>
@@ -53,10 +56,11 @@ const pageTitle = 'About | Dominik Chomicki | Software Developer';
           </p>
         </div>
       </div>
-      <img
+      <Image
         class="hidden flex-1 rounded-3xl object-cover object-right shadow-2xl shadow-primary lg:block"
-        src="me_about.png"
+        src={MeAbout}
         alt=""
+        quality="max"
       />
     </div>
 
