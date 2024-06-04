@@ -22,11 +22,27 @@ import MeImage from '../assets/me.png';
       solves real problems and <TextHighlight>creates business value</TextHighlight>.
     </p>
     <div class="flex space-x-2">
-      <Button type="primary">Check my projects</Button>
-      <Button>Read about me</Button>
+      <a href="#projects">
+        <Button type="primary">Check my projects</Button>
+      </a>
+      <a href="/about">
+        <Button>Read about me</Button>
+      </a>
     </div>
   </div>
   <div class="mt-6 w-10/12 md:w-1/2">
     <Image src={MeImage} class="h-full w-full select-none" alt="Dominik" quality="max" />
   </div>
 </div>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth',
+      });
+    });
+  });
+</script>
