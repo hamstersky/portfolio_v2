@@ -6,7 +6,9 @@ import { Image } from 'astro:assets';
 import MeNavbar from '../assets/me_navbar.png';
 ---
 
-<nav class="fixed flex w-screen flex-wrap items-center justify-between px-4 pt-4 text-xl xl:px-12">
+<nav
+  class="fixed z-20 flex w-screen flex-wrap items-center justify-between px-4 py-4 text-xl xl:px-12"
+>
   <div class="flex w-screen justify-between md:w-auto">
     <a href="/" class="flex items-center space-x-2 font-serif">
       <Image src={MeNavbar} alt="Dominik" />
@@ -45,5 +47,16 @@ import MeNavbar from '../assets/me_navbar.png';
   const button = document.getElementById('menu-button');
   button?.addEventListener('click', () => {
     toggleMobileMenu();
+  });
+
+  const nav = document.getElementsByTagName('nav')[0];
+  const scrollClass = ['bg-white', 'shadow-md'];
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 100) {
+      nav.classList.add(...scrollClass);
+    } else {
+      nav.classList.remove(...scrollClass);
+    }
   });
 </script>
