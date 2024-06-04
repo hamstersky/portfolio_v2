@@ -88,7 +88,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
             <Image
               class="w-full rounded-3xl shadow-2xl shadow-primary"
               src={images[src]()}
-              alt=""
+              alt="Project screenshot"
             />
           ))
         }
@@ -97,7 +97,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
       <Image
         class="w-full rounded-3xl shadow-2xl shadow-primary"
         src={images[big_image]()}
-        alt=""
+        alt="Project screenshot"
       />
     </div>
   </div>
