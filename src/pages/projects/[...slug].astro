@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Button from '@components/Button.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -19,6 +20,9 @@ const { Content } = await project.render();
 const excerpt = await getEntry(project.data.excerpt);
 const { Content: Excerpt } = await excerpt.render();
 const small_images = data.gallery.slice(0, 2);
+const big_image = data.gallery.slice(-1)[0];
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
 ---
 
 <BaseLayout title={project.data.title}>
@@ -82,14 +86,18 @@ const small_images = data.gallery.slice(0, 2);
       <div class="flex flex-col justify-between gap-8 md:flex-row">
         {
           small_images.map((src) => (
-            <img class="w-full rounded-3xl shadow-2xl shadow-primary" src={src} alt="" />
+            <Image
+              class="w-full rounded-3xl shadow-2xl shadow-primary"
+              src={images[src]()}
+              alt=""
+            />
           ))
         }
       </div>
       <!-- Full page -->
-      <img
+      <Image
         class="w-full rounded-3xl shadow-2xl shadow-primary"
-        src={data.gallery.slice(-1)[0]}
+        src={images[big_image]()}
         alt=""
       />
     </div>
