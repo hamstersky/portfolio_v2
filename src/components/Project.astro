@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 import Button from './Button.astro';
+import { Image } from 'astro:assets';
 interface Props {
   reverse: boolean;
   project: CollectionEntry<'projects'>;
@@ -8,6 +10,12 @@ interface Props {
 
 const { reverse, project } = Astro.props;
 const { title, tags, image } = project.data;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
+if (!images[image])
+  throw new Error(`"${image}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif}"`);
+
+const image_path = images[image]();
 ---
 
 <project-section
@@ -39,7 +47,11 @@ const { title, tags, image } = project.data;
   </div>
 
   <div class="z-10 flex-1">
-    <img class="min-w-full rounded-3xl object-cover shadow-2xl shadow-primary" src={image} alt="" />
+    <Image
+      class="min-w-full rounded-3xl object-cover shadow-2xl shadow-primary"
+      src={image_path}
+      alt=""
+    />
   </div>
 </project-section>
 
