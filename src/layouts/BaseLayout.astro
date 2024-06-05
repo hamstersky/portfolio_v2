@@ -20,10 +20,12 @@ const { pageTitle } = Astro.props;
 </html>
 <script>
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function (this: Element, e: Event) {
       e.preventDefault();
 
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
+      const target = document.querySelector(this.getAttribute('href') as string);
+
+      target?.scrollIntoView({
         behavior: 'smooth',
       });
     });
