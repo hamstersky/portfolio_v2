@@ -14,7 +14,7 @@ export default {
         '3xl': '1920px',
       },
       colors: {
-        primary: '#8777AD',
+        primary: '#7C6CA7',
         secondary: '#B8C5F2',
       },
     },
