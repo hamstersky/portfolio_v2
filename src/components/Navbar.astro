@@ -3,7 +3,7 @@ import MenuIcon from 'icons/MenuIcon.astro';
 import Button from './Button.astro';
 import CloseIcon from 'icons/CloseIcon.astro';
 import { Image } from 'astro:assets';
-import MeNavbar from '../assets/me_navbar.png';
+import MeRound from '../assets/me_round.png';
 ---
 
 <nav
@@ -11,7 +11,7 @@ import MeNavbar from '../assets/me_navbar.png';
 >
   <div class="flex w-screen justify-between md:w-auto">
     <a href="/" class="flex items-center space-x-2 font-serif">
-      <Image src={MeNavbar} alt="Dominik" quality="max" />
+      <Image src={MeRound} class="h-10 w-10" alt="Dominik" quality="max" />
       <span>Dominik Chomicki</span>
     </a>
     <button id="menu-button" class="md:hidden">
