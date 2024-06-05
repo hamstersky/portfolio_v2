@@ -23,7 +23,7 @@ const small_images = data.gallery.slice(0, 2);
 const big_image = data.gallery.slice(-1)[0];
 const pageTitle = `${data.title} | Dominik Chomicki | Software Developer`;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**');
 ---
 
 <BaseLayout pageTitle={pageTitle}>

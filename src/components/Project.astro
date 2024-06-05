@@ -11,7 +11,7 @@ interface Props {
 const { reverse, project } = Astro.props;
 const { title, tags, image } = project.data;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**');
 
 const image_path = images[image]();
 ---
