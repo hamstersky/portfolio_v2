@@ -89,11 +89,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**');
         {
           small_images.map((src) => (
             <div class="flex-1">
-            <Image
+              <Image
                 class="h-full w-full rounded-3xl shadow-2xl shadow-primary"
-              src={images[src]()}
-              alt="Project screenshot"
-            />
+                src={images[src]()}
+                alt="Project screenshot"
+              />
             </div>
           ))
         }
