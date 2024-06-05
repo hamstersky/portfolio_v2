@@ -26,15 +26,17 @@ const projects = await getCollection('projects');
 
     <div class="flex-col space-y-24 md:space-y-32">
       {
-        projects.map(async (project, i) => {
-          const excerpt = await getEntry(project.data.excerpt);
-          const { Content } = await excerpt.render();
-          return (
-            <Project reverse={i % 2 == 1} project={project}>
-              <Content />
-            </Project>
-          );
-        })
+        projects
+          .sort((a, b) => b.data.order - a.data.order)
+          .map(async (project, i) => {
+            const excerpt = await getEntry(project.data.excerpt);
+            const { Content } = await excerpt.render();
+            return (
+              <Project reverse={i % 2 == 1} project={project}>
+                <Content />
+              </Project>
+            );
+          })
       }
     </div>
     <Contact />
