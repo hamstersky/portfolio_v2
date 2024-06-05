@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Button from '@components/Button.astro';
 import { Image } from 'astro:assets';
+import Contact from '@components/Contact.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -81,6 +82,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
         )
       }
     </div>
+    <!-- Gallery -->
     <div class="flex flex-col gap-8">
       <!-- Small images -->
       <div class="flex flex-col justify-between gap-8 md:flex-row">
@@ -101,6 +103,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*');
         alt="Project screenshot"
       />
     </div>
+    <Contact />
   </div>
-  <!-- Gallery -->
 </BaseLayout>
