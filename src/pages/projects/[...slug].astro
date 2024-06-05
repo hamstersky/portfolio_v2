@@ -75,7 +75,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**');
       {
         data.github ? (
           <a href={data.github}>
-            <Button>See code</Button>
+            <Button type={data.url ? '' : 'primary'}>See code</Button>
           </a>
         ) : (
           ''
