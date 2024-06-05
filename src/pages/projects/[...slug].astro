@@ -35,10 +35,18 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**');
         <h1 class="font-serif text-3xl font-bold md:text-4xl lg:text-5xl">{data.title}</h1>
         <Excerpt />
         <Content />
-        <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Result</h2>
-        <ul class="list-inside list-disc">
-          {data.result.map((item) => <li>{item}</li>)}
-        </ul>
+        {
+          data.result && (
+            <>
+              <h2 class="font-serif text-2xl font-bold md:text-3xl lg:text-4xl">Result</h2>
+              <ul class="list-inside list-disc">
+                {data.result.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </>
+          )
+        }
       </div>
       <!-- Right col -->
       <div class="flex flex-1 flex-col gap-4">

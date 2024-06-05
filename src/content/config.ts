@@ -14,7 +14,7 @@ const projects = defineCollection({
     client: z.string().optional(),
     scope: z.array(z.string()).optional(),
     tech: z.array(z.string()),
-    result: z.array(z.string()),
+    result: z.array(z.string()).optional(),
     gallery: z.array(z.string()),
     github: z.string().optional(),
     url: z.string().optional(),
