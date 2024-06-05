@@ -34,15 +34,3 @@ import MeImage from '../assets/me.png';
     <Image src={MeImage} class="h-full w-full select-none" alt="Dominik" quality="max" />
   </div>
 </div>
-
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth',
-      });
-    });
-  });
-</script>
